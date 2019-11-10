@@ -1,26 +1,26 @@
 #! /usr/bin/env python
 #coding=utf-8
-import sys
+import sys,os
 
 sys.path.append("./")
 from case.TestCase import ReadCase
 
-sys.path.append("/common")
+# sys.path.append("/common")
 from common.sendMail import SendMail
+from common.readConfig import ReadConfig
 
-path1 = "C:/Users/Administrator/Desktop/接口自动化测试/case/-testcase.xlsx"
-path2 = "C:/Users/Administrator/Desktop/接口自动化测试/report/-testreport.xlsx"
+casedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\InterfaceTest\Data\TestData.xlsx"
+resultdir =  os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\InterfaceTest\\result\ResultData.xlsx"
 
-rc = ReadCase()
-rc.get_case(path1,path2)
+rc = ReadCase(casedir,resultdir)
+rc.get_case()
 
 
-sender = 'lius400@163.com'
-receiver = 'lius400@163.com'
+mailconf = ReadConfig.getmailconf()
 title = '测试文件'
 
 attach_jpg = 'C:/Users/Administrator/Desktop/接口自动化测试/report/接口测试流程图.jpg'
 
 mail = SendMail()
-mail.send_mail(sender,receiver,title,path2,attach_jpg)
+mail.send_mail(mailconf.host,mailconf.port,mailconf.username,mailconf.password,mailconf.sender,mailconf.receiver,title,resultdir,attach_jpg)
 print("成功")
