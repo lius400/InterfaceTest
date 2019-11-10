@@ -75,21 +75,21 @@ class ReadCase:
         wb.save(resultdir)
 
 
-#测试用例地址
-#获取上级目录
-#print(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
-#print(os.path.abspath(os.path.dirname(os.getcwd())))
-#print(os.path.abspath(os.path.join(os.getcwd(), "..")))
-
-casedirT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\Data"+"\TestData.xlsx"
-resultdirT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\result"+"\ResultData.xlsx"
-readcase1 = ReadCase()
-readcase1.get_case(casedirT,resultdirT)
-# # if sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'Yes':
-# #     continue
-# request_data1 = sheet.cell(row = i,column = 2).value.replace('\n','').replace('r','')
-# #excel里取出来的是字符串,需要用eval函数转换
-# print(type(request_data1))
+# #测试用例地址
+# #获取上级目录
+# #print(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+# #print(os.path.abspath(os.path.dirname(os.getcwd())))
+# #print(os.path.abspath(os.path.join(os.getcwd(), "..")))
 #
-# request_data1 = eval(request_data1)
-# print(request_data1)
+# casedirT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\Data"+"\TestData.xlsx"
+# resultdirT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\result"+"\ResultData.xlsx"
+# readcase1 = ReadCase()
+# readcase1.get_case(casedirT,resultdirT)
+# # # if sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'Yes':
+# # #     continue
+# # request_data1 = sheet.cell(row = i,column = 2).value.replace('\n','').replace('r','')
+# # #excel里取出来的是字符串,需要用eval函数转换
+# # print(type(request_data1))
+# #
+# # request_data1 = eval(request_data1)
+# # print(request_data1)
