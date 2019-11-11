@@ -14,7 +14,7 @@ sys.path.append("./")
 
 class ReadCase:
     def __init__(self):
-        self.log = Log(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + './logs/test.log')
+        self.log = Log(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + '/logs/test.log')
         # self.resultdir = resultdir
         # try:
         #     #打开excel文件,返回标记位给wb
