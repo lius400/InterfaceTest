@@ -6,7 +6,7 @@ import re
 import sys
 
 sys.path.append("./")
-from common import Interface_Request
+from common.Interface_Request import Interface_Request
 
 '''
 class InterfaceTest(object):
