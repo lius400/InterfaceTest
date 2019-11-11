@@ -65,7 +65,7 @@ class InterfaceTest:
             self.req_test = req.post_json(full_url, params, headers)
         else:
             print("请求不通过,请检查case用例配置")
-        print(self.req_test)
+            print(self.req_test)
 
         # 检查点与响应数据做对比
         if (re.search(checkpoint, str(self.req_test))):
