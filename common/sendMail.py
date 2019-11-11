@@ -26,7 +26,7 @@ class Mail_entity:
     def adress(self):
         return self._adress
     @adress.setter
-    def username(self, value):
+    def adress(self, value):
         self._adress = value
 
     @property
