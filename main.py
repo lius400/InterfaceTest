@@ -12,11 +12,11 @@ from common.readConfig import ReadConfig
 casedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\InterfaceTest\Data\TestData.xlsx"
 resultdir =  os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\InterfaceTest\\result\ResultData.xlsx"
 
-rc = ReadCase(casedir,resultdir)
-rc.get_case()
+rc = ReadCase()
+rc.get_case(casedir,resultdir)
 
 
-mailconf = ReadConfig.getmailconf()
+mailconf = ReadConfig().getmailconf()
 title = '测试文件'
 
 attach_jpg = 'C:/Users/Administrator/Desktop/接口自动化测试/report/接口测试流程图.jpg'

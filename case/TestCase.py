@@ -4,7 +4,7 @@
 import openpyxl,os
 import sys
 from common.log import Log
-from src import InterfaceTest
+from src.InterfaceTest import InterfaceTest
 
 sys.path.append("./")
 
@@ -13,69 +13,72 @@ sys.path.append("./")
 #path = "C:/Users/Administrator/Desktop/liuchao-testcase.xlsx"
 
 class ReadCase:
-    def __init__(self,casedir,resultdir):
+    def __init__(self):
         self.log = Log(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + './logs/test.log')
-        self.resultdir = resultdir
-        try:
-            #打开excel文件,返回标记位给wb
-            self.wb = openpyxl.load_workbook(casedir)
-            self.log.info("打开测试用例成功!")
+        # self.resultdir = resultdir
+        # try:
+        #     #打开excel文件,返回标记位给wb
+        #     self.wb = openpyxl.load_workbook(casedir)
+        #     self.log.info("打开测试用例成功!")
+        #
+        #     # 获取sheet(第二个sheet)
+        #     self.sheet = self.wb.get_sheet_by_name("TestCase")
+        #     print("获取指定的工作表:", self.sheet.title)
+        # except BaseException as e:
+        #     self.log.info("打开测试测试用例失败:"+str(e))
 
-            # 获取sheet(第二个sheet)
-            self.sheet = self.wb.get_sheet_by_name("TestCase")
-            print("获取指定的工作表:", self.sheet.title)
-        except BaseException as e:
-            self.log.info("打开测试测试用例失败:"+str(e))
 
-
-    def get_case(self):
+    def get_case(self,casedir,resultdir):
         # log = Log(os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+'./logs/test.log')
         # try:
         #     #打开excel文件,返回标记位给wb
         #     wb = openpyxl.load_workbook(casedir)
-        #     log.info("打开测试用例成功!")
+        #     self.log.info("打开测试用例成功!")
         #
         #     # 获取sheet(第二个sheet)
         #     self.sheet = wb.get_sheet_by_name("TestCase")
         #     print("获取指定的工作表:", self.sheet.title)
         # except BaseException as e:
-        #     log.info("打开测试测试用例失败:"+str(e))
-
+        #     self.log.info("打开测试测试用例失败:"+str(e))
 
         #for循环遍历case
-        for i in range(2,self.sheet.max_row + 1):
-            if self.sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'Yes':
+        wb = openpyxl.load_workbook(casedir)
+        self.log.info("打开测试用例成功!")
+        sheet = wb.get_sheet_by_name("TestCase")
+        print("获取指定的工作表:", sheet.title)
+        for i in range(2,sheet.max_row + 1):
+            if sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'Yes':
                 continue
 
-            request_data1 = self.sheet.cell(row = i,column = 1).value
+            request_data1 = sheet.cell(row = i,column = 1).value
             print(type(request_data1),request_data1)
 
-            request_data2 = self.sheet.cell(row = i,column = 2).value
+            request_data2 = sheet.cell(row = i,column = 2).value
             print(type(request_data2),request_data2)
 
-            request_data3 = self.sheet.cell(row = i,column = 3).value
+            request_data3 = sheet.cell(row = i,column = 3).value
             print(type(request_data3),request_data3)
 
-            request_data4 = self.sheet.cell(row = i,column = 4).value
+            request_data4 = sheet.cell(row = i,column = 4).value
             print(type(request_data4),request_data4)
 
-            request_data5 = self.sheet.cell(row = i,column = 5).value
+            request_data5 = sheet.cell(row = i,column = 5).value
             print(type(request_data5),request_data5)
 
-            request_data6 = self.sheet.cell(row = i,column = 6).value
+            request_data6 = sheet.cell(row = i,column = 6).value
             print(type(request_data6),request_data6)
 
-            request_data7 = self.sheet.cell(row = i,column = 7).value
+            request_data7 = sheet.cell(row = i,column = 7).value
             #excel里取出来的是字符串,需要用eval函数转换
             #取的是字符串,转换成字典
             request_data7 = eval(request_data7)
             print(type(request_data7),request_data7)
 
 
-            request_data8 = self.sheet.cell(row = i,column = 8).value
+            request_data8 = sheet.cell(row = i,column = 8).value
             print(type(request_data8),request_data8)
 
-            request_data9 = self.sheet.cell(row = i,column = 9).value
+            request_data9 = sheet.cell(row = i,column = 9).value
             request_data9 = eval(request_data9)
             print(type(request_data9),request_data9)
 
@@ -84,10 +87,10 @@ class ReadCase:
             # headers = {}
             headers = request_data9
             it = InterfaceTest()
-            it.testrequest(request_data3,request_data4,request_data7,request_data5,request_data6,request_data8,headers,i,self.sheet,request_data1,request_data2,self.log)
+            it.testrequest(request_data3,request_data4,request_data7,request_data5,request_data6,request_data8,headers,i,sheet,request_data1,request_data2,self.log)
 
         #保存数据,excel另存为
-        self.wb.save(self.resultdir)
+        wb.save(resultdir)
 
 
 # #测试用例地址
