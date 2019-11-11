@@ -9,8 +9,8 @@ from case.TestCase import ReadCase
 from common.sendMail import SendMail
 from common.readConfig import ReadConfig
 
-casedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\InterfaceTest\Data\TestData.xlsx"
-resultdir =  os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\InterfaceTest\\result\ResultData.xlsx"
+casedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"/InterfaceTest/Data/TestData.xlsx"
+resultdir =  os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"/InterfaceTest/result/ResultData.xlsx"
 
 rc = ReadCase()
 rc.get_case(casedir,resultdir)
