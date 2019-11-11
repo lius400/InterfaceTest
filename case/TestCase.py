@@ -47,7 +47,8 @@ class ReadCase:
         sheet = wb.get_sheet_by_name("TestCase")
         print("获取指定的工作表:", sheet.title)
         for i in range(2,sheet.max_row + 1):
-            if sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'Yes':
+            if sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'YES':
+                print(sheet.cell(row = i,column = 10).value.replace('\n','').replace('r',''))
                 continue
 
             request_data1 = sheet.cell(row = i,column = 1).value
@@ -87,7 +88,9 @@ class ReadCase:
             # headers = {}
             headers = request_data9
             it = InterfaceTest()
-            it.testrequest(request_data3,request_data4,request_data7,request_data5,request_data6,request_data8,headers,i,sheet,request_data1,request_data2,self.log)
+            result,req_test =  it.testrequest(request_data3,request_data4,request_data7,request_data5,request_data6,request_data8,headers,i,sheet,request_data1,request_data2,self.log)
+            sheet.cell(row=i, column=11).value = result  # row是通过遍历case类传递的
+            sheet.cell(row=i, column=12).value = str(req_test)
 
         #保存数据,excel另存为
         wb.save(resultdir)
