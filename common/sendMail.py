@@ -14,49 +14,6 @@ from email.mime.application import MIMEApplication
 3.发送
 '''
 
-class Mail_entity:
-    @property
-    def host(self):
-        return self._host
-    @host.setter
-    def host(self, value):
-        self._host = value
-
-    @property
-    def adress(self):
-        return self._adress
-    @adress.setter
-    def adress(self, value):
-        self._adress = value
-
-    @property
-    def password(self):
-        return self._password
-    @password.setter
-    def password(self, value):
-        self._password = value
-
-    @property
-    def port(self):
-        return self._port
-    @port.setter
-    def port(self, value):
-        self._port = value
-
-    @property
-    def sender(self):
-        return self._sender
-    @sender.setter
-    def sender(self, value):
-        self._sender = value
-
-    @property
-    def receiver(self):
-        return self._receiver
-    @receiver.setter
-    def receiver(self, value):
-        self._receiver = value
-
 
 class SendMail:
     # def send_mail(self, sender, receiver, title):

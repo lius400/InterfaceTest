@@ -3,11 +3,11 @@
 <map>
 
 	<conf type="Mysql">
-		<host>0.0.0.0</host>
+		<host>127.0.0.1</host>
         <username>root</username>
-        <password></password>
+        <password>11111111</password>
         <port>3306</port>
-        <database>InterfaceTest</database>
+        <database>test</database>
 	</conf>
 
 	<conf type="Email">
