@@ -60,7 +60,7 @@ class Mail_entity:
 
 class SendMail:
     # def send_mail(self, sender, receiver, title):
-    def send_mail(self,host,port,adress,password,sender, receiver, title, attach_xlsx, attach_jpg):
+    def send_mail(self,host,port,address,password,sender, receiver, title, attach_xlsx, attach_jpg):
         msg = email.mime.multipart.MIMEMultipart()  # 生成包含多个邮件体的对象
         msg['from'] = sender
         msg['to'] = receiver
@@ -94,7 +94,7 @@ class SendMail:
         print('成功3')
         smtp.connect(host, port)  # 链接服务器，smtp地址+端口
         print('成功4')
-        smtp.login(adress, password)  # 登录，用户名+密码
+        smtp.login(address, password)  # 登录，用户名+密码
         print('成功5')
         smtp.sendmail(sender, receiver, str(msg))  # 发送，from+to+内容
         smtp.quit()
