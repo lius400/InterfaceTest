@@ -3,10 +3,8 @@
 
 import csv,os
 
-
 #测试数据封装
 class TestData:
-    csvfile = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "/Data/TestData.csv"
 
     def __init__(self,ID,URL,URI,Param,Dataform,Checkpoint,Headers,Casename):
         self.ID = ID
@@ -20,14 +18,16 @@ class TestData:
 
 class ReadTestData:
 
-    def Read(self):
+    @staticmethod
+    def Read():
+        csvfile = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "/Data/TestData.csv"
         DataList = []
-        # csvfile = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "/Data/TestData.csv"
-        with open(self.csvfile) as f:
+        with open(csvfile) as f:
             f_csv = csv.DictReader(f)
             for row in f_csv:
-                data = TestData(row['用例编号'], row['URL'], row['URI'], row['参数'], row['参数类型'], row['检查点'], row['headers'],
-                                row['用例名称'])
+                # data = TestData(row['用例编号'], row['URL'], row['URI'], row['参数'], row['参数类型'], row['检查点'], row['headers'],
+                #                 row['用例名称'])
+                data = {"ID":row['用例编号'],"URL":row['URL'],"URI":row['URI'],"RequestForm":row['请求方法(GET/POST)'],"Param":row['参数'],"DataForm":row['参数类型'],"CheckPoint":row['检查点'],"Headers":row['headers'],"CaseName":row['用例名称']}
                 DataList.append(data)
         return DataList
 

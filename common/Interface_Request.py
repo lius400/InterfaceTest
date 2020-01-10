@@ -2,52 +2,63 @@
 #coding=utf-8
 
 import requests
-import json
+import json,os
+from common.log import Log
 
 # 定义请求类
 class Interface_Request:
-    def req_get(self, url, params, headers):
+
+    def __init__(self):
+        Current_class = os.path.basename(__file__)
+        print(Current_class)
+        self.log = Log(Current_class)
+
+    def req_get(self, url, Param, Headers):
         try:
-            r = requests.get(url, params=params, headers=headers)
-            r.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
+            response = requests.get(url, params=Param, headers=json.loads(Headers))
+            response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
             # 转换为python类型的字典格式,json包的响应结果，调用json(),转换成python类型
             # print(r.status_code)
-            json_r = r.json()
-            return json_r
+            result = response.text
+            return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
+            self.log.error("请求不能完成:%s"%(str(e)))
 
-    def post_kv(self, url, data, headers):
+    def post_kv(self, url, data, headers,log):
         try:
-            r = requests.post(url, data=data, headers=headers)
-            r.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
+            response = requests.post(url, data=data, headers=headers)
+            response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
             # 转换为python类型的字典格式,json包的响应结果，调用json(),转换成python类型
-            json_r = r.json()
-            # print(json_r)
-            return json_r
+            result = response.text
+            # print(result)
+            return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
+            log.error("请求不能完成:%s" % (str(e)))
 
-    def post_json(self, url, data, headers):
+    def post_json(self, url, data, headers,log):
         try:
             # python类型转化为json类型
             data = json.dumps(data)
-            r = requests.post(url, data=data, headers=headers)
-            r.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
-            json_r = r.json()
-            return json_r
+            response = requests.post(url, data=data, headers=headers)
+            response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
+            result = response.text
+            return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
+            log.error("请求不能完成:%s" % (str(e)))
 
-    def post_file(self, url, files, headers):
+    def post_file(self, url, files, headers,log):
         try:
             # 上传文件
-            r = requests.post(url, files=files, headers=headers)
-            r.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
-            json_r = r.json()
-            return json_r
+            response = requests.post(url, files=files, headers=headers)
+            response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
+            result = response.text
+            return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
+            log.error("请求不能完成:%s" % (str(e)))
 
 
 
