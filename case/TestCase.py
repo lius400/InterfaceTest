@@ -9,12 +9,11 @@ from src.InterfaceTest import InterfaceTest
 sys.path.append("./")
 
 
-#避免转义,将\写成/
-#path = "C:/Users/Administrator/Desktop/liuchao-testcase.xlsx"
-
 class ReadCase:
     def __init__(self):
-        self.log = Log(os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + '/logs/test.log')
+        Current_class = os.path.basename(__file__)
+        print(Current_class)
+        self.log = Log(Current_class)
         # self.resultdir = resultdir
         # try:
         #     #打开excel文件,返回标记位给wb
@@ -96,21 +95,21 @@ class ReadCase:
         wb.save(resultdir)
 
 
-# #测试用例地址
-# #获取上级目录
-# #print(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
-# #print(os.path.abspath(os.path.dirname(os.getcwd())))
-# #print(os.path.abspath(os.path.join(os.getcwd(), "..")))
-#
+#测试用例地址
+#获取上级目录
+#print(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+#print(os.path.abspath(os.path.dirname(os.getcwd())))
+#print(os.path.abspath(os.path.join(os.getcwd(), "..")))
+
 # casedirT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\Data"+"\TestData.xlsx"
 # resultdirT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\result"+"\ResultData.xlsx"
 # readcase1 = ReadCase()
 # readcase1.get_case(casedirT,resultdirT)
-# # # if sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'Yes':
-# # #     continue
-# # request_data1 = sheet.cell(row = i,column = 2).value.replace('\n','').replace('r','')
-# # #excel里取出来的是字符串,需要用eval函数转换
-# # print(type(request_data1))
-# #
-# # request_data1 = eval(request_data1)
-# # print(request_data1)
+# # if sheet.cell(row = i,column = 10).value.replace('\n','').replace('r','') != 'Yes':
+# #     continue
+# request_data1 = sheet.cell(row = i,column = 2).value.replace('\n','').replace('r','')
+# #excel里取出来的是字符串,需要用eval函数转换
+# print(type(request_data1))
+#
+# request_data1 = eval(request_data1)
+# print(request_data1)
