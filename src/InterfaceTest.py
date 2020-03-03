@@ -38,16 +38,13 @@ class InterfaceTest:
         else:
             print("请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName))
             log.error("请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName))
+            return "请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName),''
 
         # 检查点与响应数据做对比
         if (re.search(CheckPoint, str(self.req_test))):
-            # sheet.cell(row=i, column=11).value = "成功"  # row是通过遍历case类传递的
-            # sheet.cell(row=i, column=12).value = str(self.req_test)
             log.info("用例编号" + str(num) + " " + CaseName + "接口执行成功")
             return "成功", str(self.req_test)
         else:
-            # sheet.cell(row=i, column=11).value = "失败"
-            # sheet.cell(row=i, column=12).value = str(self.req_test)
             log.error("用例编号" + str(num) + " " + CaseName + "接口执行失败")
             return "失败", str(self.req_test)
 
