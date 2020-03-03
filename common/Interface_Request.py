@@ -35,7 +35,7 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            self.log.error("请求不能完成:%s" % (str(e)))
+            self.log.error("请求不能完成:{}".format(str(e)))
 
     def post_json(self, url, data, headers):
         try:
