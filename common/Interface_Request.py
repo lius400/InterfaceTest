@@ -25,7 +25,7 @@ class Interface_Request:
             print("请求不能完成:", str(e))
             self.log.error("请求不能完成:%s"%(str(e)))
 
-    def post_kv(self, url, data, headers,log):
+    def post_kv(self, url, data, headers):
         try:
             response = requests.post(url, data=data, headers=headers)
             response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
@@ -35,9 +35,9 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            log.error("请求不能完成:%s" % (str(e)))
+            self.log.error("请求不能完成:%s" % (str(e)))
 
-    def post_json(self, url, data, headers,log):
+    def post_json(self, url, data, headers):
         try:
             # python类型转化为json类型
             data = json.dumps(data)
@@ -47,9 +47,9 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            log.error("请求不能完成:%s" % (str(e)))
+            self.log.error("请求不能完成:%s" % (str(e)))
 
-    def post_file(self, url, files, headers,log):
+    def post_file(self, url, files, headers):
         try:
             # 上传文件
             response = requests.post(url, files=files, headers=headers)
@@ -58,7 +58,7 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            log.error("请求不能完成:%s" % (str(e)))
+            self.log.error("请求不能完成:%s" % (str(e)))
 
 
 
