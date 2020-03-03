@@ -36,10 +36,8 @@ class InterfaceTest:
             Headers = {'Content-Type': 'application/json;charset=utf-8'}
             self.req_test = req.post_json(full_url, Param, Headers)
         else:
-            print("请求不通过,请检查case用例配置")
-            log.error("请求不通过,请检查case用例配置")
-            log.error(self.req_test)
-            print(self.req_test)
+            print("请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName))
+            log.error("请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName))
 
         # 检查点与响应数据做对比
         if (re.search(CheckPoint, str(self.req_test))):
