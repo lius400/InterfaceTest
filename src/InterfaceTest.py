@@ -11,7 +11,7 @@ from common.Interface_Request import Interface_Request
 
 class InterfaceTest:
 
-    def testrequest(self,URL,URI,Param,RequestForm,DataForm,CheckPoint,Headers,num,CaseName):
+    def testrequest(self,URL,URI,Param,RequestForm,File,CheckPoint,Headers,num,CaseName):
         Current_class = os.path.basename(__file__)
         print(Current_class)
         log = Log(Current_class)
@@ -30,11 +30,23 @@ class InterfaceTest:
         if (RequestForm == 'GET'):
             # 调用请求类的函数,得到返回结果
             self.req_test = req.req_get(full_url, Param, Headers)
-        elif (RequestForm == 'POST' and DataForm == 'Form'):
+
+        # elif (RequestForm == 'POST' and DataForm == 'Form'):
+        #     self.req_test = req.post_kv(full_url, Param, Headers)
+        # elif (RequestForm == 'POST' and DataForm == 'Json'):
+        #     Headers = {'Content-Type': 'application/json;charset=utf-8'}
+        #     self.req_test = req.post_json(full_url, Param, Headers)
+        # elif (RequestForm == 'POST' and DataForm == 'File'):
+        #     Headers = {'Content-Type': 'multipart/form-data;boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA'}
+        #     self.req_test = req.post_json(full_url, Param, Headers)
+
+        elif (RequestForm == 'POST' and re.search("application/x-www-form-urlencoded",Headers)):
             self.req_test = req.post_kv(full_url, Param, Headers)
-        elif (RequestForm == 'POST' and DataForm == 'Json'):
-            Headers = {'Content-Type': 'application/json;charset=utf-8'}
+        elif (RequestForm == 'POST' and re.search("application/json",Headers)):
             self.req_test = req.post_json(full_url, Param, Headers)
+        elif (RequestForm == 'POST' and re.search("multipart/form-data",Headers)):
+            Headers = {'Content-Type': 'multipart/form-data;boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA'}
+            self.req_test = req.post_json(full_url, File, Headers)
         else:
             print("请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName))
             log.error("请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName))

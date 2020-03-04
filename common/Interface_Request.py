@@ -12,10 +12,11 @@ class Interface_Request:
         Current_class = os.path.basename(__file__)
         print(Current_class)
         self.log = Log(Current_class)
+        self.session = requests.Session()
 
     def req_get(self, url, Param, Headers):
         try:
-            response = requests.get(url, params=Param, headers=json.loads(Headers))
+            response = self.session.get(url, params=Param, headers=json.loads(Headers))
             response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
             # 转换为python类型的字典格式,json包的响应结果，调用json(),转换成python类型
             # print(r.status_code)
@@ -27,7 +28,7 @@ class Interface_Request:
 
     def post_kv(self, url, data, headers):
         try:
-            response = requests.post(url, data=data, headers=headers)
+            response = self.session.post(url, data=data, headers=headers)
             response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
             # 转换为python类型的字典格式,json包的响应结果，调用json(),转换成python类型
             result = response.text
@@ -41,7 +42,7 @@ class Interface_Request:
         try:
             # python类型转化为json类型
             data = json.dumps(data)
-            response = requests.post(url, data=data, headers=headers)
+            response = self.session.post(url, data=data, headers=headers)
             response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
             result = response.text
             return result
@@ -52,7 +53,7 @@ class Interface_Request:
     def post_file(self, url, files, headers):
         try:
             # 上传文件
-            response = requests.post(url, files=files, headers=headers)
+            response = self.session.post(url, files=files, headers=headers)
             response.raise_for_status()  # 如果响应状态码不是 200，就主动抛出异常
             result = response.text
             return result

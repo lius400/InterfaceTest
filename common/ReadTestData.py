@@ -27,7 +27,7 @@ class ReadTestData:
             for row in f_csv:
                 # data = TestData(row['用例编号'], row['URL'], row['URI'], row['参数'], row['参数类型'], row['检查点'], row['headers'],
                 #                 row['用例名称'])
-                data = {"ID":row['用例编号'],"URL":row['URL'],"URI":row['URI'],"RequestForm":row['请求方法(GET/POST)'],"Param":row['参数'],"DataForm":row['参数类型'],"CheckPoint":row['检查点'],"Headers":row['headers'],"CaseName":row['用例名称']}
+                data = {"ID":row['用例编号'],"URL":row['URL'],"URI":row['URI'],"RequestForm":row['请求方法(GET/POST)'],"Param":row['参数'],"File":row['File'],"CheckPoint":row['检查点'],"Headers":row['headers'],"CaseName":row['用例名称']}
                 DataList.append(data)
         return DataList
 
