@@ -45,7 +45,7 @@ class InterfaceTest:
         elif (RequestForm == 'POST' and re.search("application/json",Headers)):
             self.req_test = req.post_json(full_url, Param, Headers)
         elif (RequestForm == 'POST' and re.search("multipart/form-data",Headers)):
-            Headers = {'Content-Type': 'multipart/form-data;boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA'}
+            Headers = {'Content-Type': 'multipart/form-data'}
             self.req_test = req.post_json(full_url, File, Headers)
         else:
             print("请求不通过,请检查case用例配置:{0}-{1}".format(num,CaseName))
