@@ -19,7 +19,7 @@ class MysqlBase:
             # Connect to the database
             self.connection = pymysql.connect(host=mysqlconf.host, port=int(mysqlconf.port), db=mysqlconf.database,
                                  user=mysqlconf.username,
-                                 passwd=mysqlconf.password, charset="utf8")
+                                 passwd=mysqlconf.password, charset="utf8",cursorclass=pymysql.cursors.DictCursor)
         except pymysql.err.OperationalError as e:
             MysqlBase.log.error("Mysql Error %d: %s" % (e.args[0], e.args[1]))
 
