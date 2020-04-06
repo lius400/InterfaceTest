@@ -1,3 +1,3 @@
 用例编号,用例名称,URL,URI,请求方法(GET/POST),File,参数,检查点,headers,执行,测试结果,测试结果描述
-1,苹果11经典价格,http://p.3.cn/,prices/mgets,GET,,"{""skuIds"":""100004770249"",""type"":""1""}",J_100004770249,"{""Content-Type"":""application/x-www-form-urlencoded"",""charset"":""UTF-8""}",YES,,
-2,海信HZ55E3D-J,http://p.3.cn/,prices/mgets,GET,,"{""skuIds"":""100004048751"",""type"":""1""}",J_100004048751,"{""Content-Type"":""application/x-www-form-urlencoded"",""charset"":""UTF-8""}",YES,,
+1,苹果11经典价格,http://p.3.cn/,prices/mgets,GET,,skuIds=100004770249&type=1,J_100004770249,"{""Content-Type"":""application/x-www-form-urlencoded"",""charset"":""UTF-8""}",YES,,
+2,海信HZ55E3D-J,http://p.3.cn/,prices/mgets,GET,,skuIds=100004048751&type=1,J_100004048751,"{""Content-Type"":""application/x-www-form-urlencoded"",""charset"":""UTF-8""}",YES,,

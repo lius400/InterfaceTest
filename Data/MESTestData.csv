@@ -1,0 +1,2 @@
+用例编号,用例名称,URL,URI,请求方法(GET/POST),File,参数,检查点,headers,执行,测试结果,测试结果描述
+1,MES登录,http://stage-mes.edianzu.cn/,login.jsp,POST,,passport=LC&password=Lc123456&areaType=1,修改密码,"{""Content-Type"":""application/x-www-form-urlencoded"",""charset"":""UTF-8""}",YES,,
