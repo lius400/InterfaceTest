@@ -3,7 +3,7 @@
 
 import pymysql,os,logging
 from Common.readConfig import ReadConfig
-# from Common import logger
+from Common import logger
 
 
 class MysqlBase:

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 #coding=utf-8
 
-import requests
+import requests,logging
 import json,os
-from Common.log import Log
+from Common import logger
 
 # 定义请求类
 class Interface_Request:
@@ -11,7 +11,6 @@ class Interface_Request:
     def __init__(self):
         Current_class = os.path.basename(__file__)
         print(Current_class)
-        self.log = Log(Current_class)
         self.session = requests.Session()
 
     def req_get(self, url, Param, Headers):
@@ -24,7 +23,7 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            self.log.error("请求不能完成:%s"%(str(e)))
+            logging.error("请求不能完成:%s"%(str(e)))
 
     def post_kv(self, url, data, headers):
         try:
@@ -36,7 +35,7 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            self.log.error("请求不能完成:{}".format(str(e)))
+            logging.error("请求不能完成:{}".format(str(e)))
 
     def post_json(self, url, data, headers):
         try:
@@ -48,7 +47,7 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            self.log.error("请求不能完成:%s" % (str(e)))
+            logging.error("请求不能完成:%s" % (str(e)))
 
     def post_file(self, url, files, headers):
         try:
@@ -59,7 +58,7 @@ class Interface_Request:
             return result
         except requests.RequestException as e:
             print("请求不能完成:", str(e))
-            self.log.error("请求不能完成:%s" % (str(e)))
+            logging.error("请求不能完成:%s" % (str(e)))
 
 
 

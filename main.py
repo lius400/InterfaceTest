@@ -5,6 +5,7 @@ import sys,os
 sys.path.append("./")
 import unittest
 from Common.BeautifulReport import BeautifulReport
+from Common import logger
 
 
 if __name__ == '__main__':
