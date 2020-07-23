@@ -3,11 +3,11 @@
 
 import requests
 import re,sys,os
-from common.log import Log
+from Common.log import Log
 import unittest
 
 sys.path.append("./")
-from common.Interface_Request import Interface_Request
+from Common.Interface_Request import Interface_Request
 
 class InterfaceTest:
 

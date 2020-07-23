@@ -4,7 +4,7 @@ import sys,os
 
 sys.path.append("./")
 import unittest
-from common.BeautifulReport import BeautifulReport
+from Common.BeautifulReport import BeautifulReport
 
 
 if __name__ == '__main__':

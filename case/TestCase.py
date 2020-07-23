@@ -2,10 +2,10 @@
 #coding=utf-8
 
 import openpyxl,os,sys,unittest,re
-from common.log import Log
+from Common.log import Log
 from ddt import ddt,data
 from src.InterfaceTest import InterfaceTest
-from common.ReadTestData import ReadTestData
+from Common.ReadTestData import ReadTestData
 
 
 sys.path.append("./")

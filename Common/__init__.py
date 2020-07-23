@@ -1,1 +1,1 @@
-__all__ = ['Interface_request','log','readConfig','sendMail']
+__all__ = ['Interface_Request','readConfig','sendMail']

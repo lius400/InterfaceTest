@@ -1,7 +1,7 @@
 
 import sys, time
 sys.path.append('../db_fixture')
-from common.DButil import MysqlBase
+from Common.DButil import MysqlBase
 
 # 定义过去时间
 past_time = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()-100000))

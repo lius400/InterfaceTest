@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 #coding=utf-8
 
-import pymysql,os
-from common.readConfig import ReadConfig
-from common.log import Log
+import pymysql,os,logging
+from Common.readConfig import ReadConfig
+# from Common import logger
 
 
 class MysqlBase:
-
-    log = Log(os.path.basename(__file__))
 
     def __init__(self):
 
@@ -21,7 +19,7 @@ class MysqlBase:
                                  user=mysqlconf.username,
                                  passwd=mysqlconf.password, charset="utf8",cursorclass=pymysql.cursors.DictCursor)
         except pymysql.err.OperationalError as e:
-            MysqlBase.log.error("Mysql Error %d: %s" % (e.args[0], e.args[1]))
+            logging.error("Mysql Error %d: %s" % (e.args[0], e.args[1]))
 
     # clear table data
     def clear(self, table_name):
@@ -71,7 +69,7 @@ class MysqlBase:
                                  user=mysqlconf.username,
                                  passwd=mysqlconf.password, charset="utf8")
         except pymysql.err.OperationalError as e:
-            MysqlBase.log.error("Mysql Error %d: %s" % (e.args[0], e.args[1]))
+            logging.error("Mysql Error %d: %s" % (e.args[0], e.args[1]))
 
         # 使用 cursor() 方法创建一个游标对象 cursor
         cursor = db.cursor()

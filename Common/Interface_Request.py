@@ -3,7 +3,7 @@
 
 import requests
 import json,os
-from common.log import Log
+from Common.log import Log
 
 # 定义请求类
 class Interface_Request:
